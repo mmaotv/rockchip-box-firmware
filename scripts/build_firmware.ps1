@@ -72,8 +72,12 @@
       just as well as a full one, in seconds instead of minutes.
 
   USAGE
+    # -ToolBin defaults to the bundled modern toolchain:
+    #   <repo>/tools/RKDevTool_v3.37/bin  (AFPTool v2.28 + RKImageMaker v2.23)
+    # For legacy RK3368/RK330A boxes, pass the legacy toolchain instead:
+    .\build_firmware.ps1 -PackDir D:\b\pack -Loader D:\b\loader.bin -OutFile D:\b\update.img
     .\build_firmware.ps1 -PackDir D:\b\pack -Loader D:\b\loader.bin -OutFile D:\b\update.img `
-                         -ToolBin 'D:\...\Rockchip-AndroidTool_Release_v2.84\bin'
+                         -ToolBin '..\tools\AndroidTool_v2.84\bin'
     .\build_firmware.ps1 ... -KeepRkaf          (keep the intermediate .rkaf)
     .\build_firmware.ps1 ... -ReferenceLoader D:\b\known_good_loader.bin
 #>
@@ -81,7 +85,7 @@ param(
     [Parameter(Mandatory = $true)][string]$PackDir,
     [Parameter(Mandatory = $true)][string]$Loader,
     [Parameter(Mandatory = $true)][string]$OutFile,
-    [Parameter(Mandatory = $true)][string]$ToolBin,
+    [Parameter(Mandatory = $false)][string]$ToolBin = (Join-Path $PSScriptRoot '..\tools\RKDevTool_v3.37\bin'),
     [string]$ReferenceLoader,
     [string]$OsType = 'ANDROIDOS',
     [switch]$KeepRkaf

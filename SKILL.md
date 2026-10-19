@@ -78,11 +78,14 @@ the bytes first.
 
 ### Step 0 - Tooling
 
-Put these in one archive folder before touching a device:
+These are bundled in this repo under `tools/` (no download needed). Use:
 
-- `RKDevTool_v3.3x` (newer boxes) and `AndroidTool / RKDevTool v2.84` (legacy boxes)
-- **`DriverAssitant_v5.x.zip` - the Rockusb driver.** Without it a bricked box
-  cannot be recognised at all. This is the single most commonly forgotten item.
+- `tools/RKDevTool_v3.37/` - newer boxes (RK3566 / RK3568)
+- `tools/AndroidTool_v2.84/` - legacy boxes (RK3368 / RK330A)
+- **`tools/Rockusb_Driver/` - the Rockusb driver.** Without it a bricked box
+  cannot be recognised at all (no `VID_2207` in Device Manager). Install it first:
+  right-click `tools/Rockusb_Driver/<arch>/<os>/rockusb.inf` → Install, or run the
+  bundled DriverAssistant. This is the single most commonly forgotten item.
 - A USB2 port, a short cable, no hub, external DC power to the box.
 
 ### Step 1 - Identify the device (read-only, never assume)
@@ -194,7 +197,7 @@ framework strings in every image.
 
 ```
 .\build_firmware.ps1 -PackDir <packdir> -Loader <loader.bin> -OutFile <update.img> `
-                     -ToolBin '<...>\Rockchip-AndroidTool_Release_v2.84\bin' `
+                     -ToolBin '..\tools\AndroidTool_v2.84\bin' `   # legacy RK3368/RK330A (default is RKDevTool v3.37)
                      -ReferenceLoader <known_good_loader.bin>
 ```
 

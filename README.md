@@ -52,11 +52,20 @@ scripts/                 驱动工具与校验脚本
   build_firmware.ps1     AFPTool + RKImageMaker 打包并校验 RKFW 头与 loader 区
   scan_markers.py        字节扫描镜像中的桌面/应用特征
   lpverify.py / merge_two.py / merge_super.py / patch_usbplug.py / checkread.py / redo_partitions.ps1
+tools/                  配套瑞芯微工具与驱动（开箱即用的已验证副本）
+  README.md             版本、来源、许可与校验说明
+  SHA256SUMS.txt        所有二进制文件的 SHA256 哈希清单
+  RKDevTool_v3.37/      现代平台烧写工具（RK3566/RK3568，含 AFPTool v2.28 + RKImageMaker v2.23）
+  AndroidTool_v2.84/    传统平台烧写工具（RK3368/RK330A，含 AFPTool v1.65 + RKImageMaker v1.67）
+  Rockusb_Driver/       Rockusb 驱动（x64/x86，win7/win8/xp），连接设备必需
 ```
 
 ## 快速开始 / Quick start
 
-1. 准备工具：`RKDevTool`（现代）或 `AndroidTool`（传统），以及 **Rockusb 驱动（DriverAssistant）**。
+1. 准备工具：本仓库 `tools/` 已附带开箱即用的 `RKDevTool_v3.37`（现代平台）与
+   `AndroidTool_v2.84`（传统平台），以及 `Rockusb_Driver/`。**先安装 Rockusb 驱动**
+   （对 `tools/Rockusb_Driver/.../rockusb.inf` 右键「安装」，或运行随包的 DriverAssistant），
+   否则 Windows 无法识别 `VID_2207` 的 MASKROM/Loader 设备。
 2. 进入设备连接状态（MASKROM / Loader），确认 `Get-PnpDevice` 能看到 `VID_2207`。
 3. **先执行 Step 0**：导出前 0x2000 扇区（含分区表 + loader 区），并从中切出 `MiniLoaderAll.bin`；按设备按钮抓取分区表清单。
 4. 按 `SKILL.md` 的流程完成备份、校验、修改、打包。

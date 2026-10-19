@@ -14,6 +14,10 @@ English abstract below. 中文说明为主。
 
 **识别设备 →（先备份分区表 + mini loader）→ 完整备份 → 校验 → 改 system → 打包固件包 → 验收 → 归档**
 
+> **面向谁 / Audience:** 本仓库首先是一套 **给 AI 助手 / AI 工具使用的技能（skill / instruction set）**——
+> 由 AI agent、coding assistant 等读取 `SKILL.md` 作为指令、依照 `references/` 执行 RK 盒子的备份 / 精简 / 重刷任务。
+> 人类也可直接照此流程操作；AI 工具使用时请以 `SKILL.md` 为唯一权威入口，并在动手前**通读** `references/pitfalls.md`。
+
 它适用于两类瑞芯微平台，差异只在三处：
 
 | | 传统平台（RK3368 / RK330A，Android 5.x） | 现代平台（RK3566 / RK3568，Android 11+） |
@@ -60,6 +64,7 @@ scripts/                 驱动工具与校验脚本
 
 ## 适用场景 / Scope
 
+- **AI 助手 / AI 工具（首要受众）**：作为技能被 agent、coding assistant 直接读取与执行；整个仓库即一份"指令集"。
 - 设备 owners / 维修人员对自己的瑞芯微盒子做系统精简、换桌面、去广告。
 - 研究者做固件备份、分析与再打包。
 - **不适用于**：绕过厂商授权、破解付费内容、或任何违反设备保修/当地法律的行为。

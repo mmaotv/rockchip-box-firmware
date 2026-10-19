@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Device images / backups (never commit real device data)
+*.img
+*.bin
+*.rkb
+backup_*/
+partitions/
+dist/
+sha256.txt
+
+# Logs
+*.log

@@ -155,7 +155,7 @@ Recipe that worked on this box (no lpunpack/lpmake, no flash rebuild):
    place rather than rebuilding.
 
 Fingerprint check (`scripts/scan_markers.py old.img new.img`), stock -> modified:
-`Emotn 0->13`, `dangbei 6->23`, `当贝 0->3`, `应用管家 0->1`, `stock launcher 294->282`.
+`alt-launcher-A 0->13`, `alt-market-B 6->23`, `alt-market-B 0->3`, `helper-app 0->1`, `stock launcher 294->282`.
 Only 6 app dirs existed from a 200-entry package blacklist - this box carries no
 `com.yunos.*` / `com.alibaba.*` at all, so the list must always be intersected
 with what the image really contains before promising a "de-bloated" system.

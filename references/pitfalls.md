@@ -328,7 +328,7 @@ fields made the tool crash (`tool_error.dmp`) instead of rejecting cleanly.
 Removing 13 `/app` components broke three unrelated things at once on the real box:
 the input method could not be used, WiFi **crashed the moment connect was pressed**,
 and USB devices were not recognised at all. Only the UX-level components need to go:
-the stock **launcher** (replaced by an alternate launcher such as Emotn), the stock
+the stock **launcher** (replaced by a third-party alternate launcher), the stock
 **app store**, and the **OTA updater** (it would undo the change). Keep **everything** else:
 `SettingService`, `Settings2`, `MiddleLayer`, `BackgroundService.apk`,
 `UsbFactory.apk`, `UsbService.apk`, `HomeKey`, `MediaPlayer`, `FileBrowser`,

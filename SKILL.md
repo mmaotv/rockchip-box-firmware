@@ -186,8 +186,8 @@ Then prove the change landed with `scripts/scan_markers.py`:
 python scan_markers.py stock_system.img modified_system.img
 ```
 
-Keep a stock image as the baseline; distinctive markers (`Emotn`, `dangbei`, app
-names) show what actually got in. `Launcher` alone is meaningless - it matches
+Keep a stock image as the baseline; distinctive markers (a third-party TV launcher
+or app market, app names) show what actually got in. `Launcher` alone is meaningless - it matches
 framework strings in every image.
 
 ### Step 4 - Build the firmware package (the loader is the hard part)

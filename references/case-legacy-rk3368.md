@@ -66,8 +66,8 @@ rather than a failed read.
 | image | markers found | meaning |
 |---|---|---|
 | stock `system_000B2000-00300000.img` | stock launcher only | factory system, untouched |
-| `system_modified.img` | Emotn 11, dangbei 4, 应用管家 1 | early modified build; this one was actually flashed and verified on the device |
-| `system_final.img` | Emotn 11, dangbei 17, 当贝 3, 应用管家 1 | complete modified build (EmotnUI + 当贝市场 + 应用管家) — used in the firmware packages |
+| `system_modified.img` | alt-launcher-A 11, alt-market-B 4, helper-app 1 | early modified build; this one was actually flashed and verified on the device |
+| `system_final.img` | alt-launcher-A 11, alt-market-B 17, alt-market-B 3, helper-app 1 | complete modified build (alternate launcher + market + helper app) — used in the firmware packages |
 
 Markers were obtained with `scan_markers.py`; the stock image is what makes the
 comparison meaningful. Note the two modified images are genuinely different

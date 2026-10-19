@@ -13,14 +13,26 @@ or firmware build**, first secure:
 - **mini loader** - the combined `BOOT`/`LDR` container, carved out of the same
   region as `MiniLoaderAll.bin`. It is what revives a dead box and what every
   firmware package imports.
+- **tool partition config** - the flashing tool's importable `.cfg` (INI-style,
+  one `[<part>]` section per partition with `Name`/`Path`/`Type`/`Base`/`Length`/
+  `Index`/`Mask`). Export it from the tool's 下载镜像 / 设备分区表 panel the
+  instant the table is read. The tool flashes from this file, never from
+  `parameter.txt` - without it you cannot write the partitions back even if you
+  have every image.
 
-The instant both are on disk, **save the partition table in four copies** so a
-single lost/overwritten file cannot sink a restore:
+The instant all three are on disk, **save the partition table and its tool config
+in four copies** so a single lost/overwritten file cannot sink a restore. The
+`.cfg` files are the flashing tool's native, importable partition layout - they are
+what you load into RKDevTool / AndroidTool to actually flash, NOT the text
+`parameter.txt`:
 
-1. `parameter.txt` (or `gpt_parts.txt`) - the parsed table
+1. `parameter.txt` (or `gpt_parts.txt`) - the human-readable parsed table
 2. `preloader_region.img` / the raw GPT block (sector 0 LBA 0..63) - the original bytes
-3. `config_restore_stock.cfg` - a tool config pointing at the **stock** backups
-4. `config_flash_<modified>.cfg` - a tool config pointing at the **modified** set
+3. `config_restore_stock.cfg` - the tool's importable config pointing at the
+   **stock** backups (generated from the 下载镜像 / 设备分区表 panel the moment
+   the table is read)
+4. `config_flash_<modified>.cfg` - the tool's importable config pointing at the
+   **modified** set
 
 Rule 0 of `SKILL.md`'s hard-won rules is this, made operational. Never skip it to
 "save time".

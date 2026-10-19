@@ -59,9 +59,20 @@ the bytes first.
 >   captured above) and carve out `MiniLoaderAll.bin` from the loader offset
 >   (e.g. LBA 0x40 for RK3328). This combined BOOT container is what you must
 >   re-flash to revive a dead box and what every firmware package imports.
+> - **tool partition config (the importable `.cfg`)** - the `parameter.txt` above
+>   is only half the job. The flashing tool (RKDevTool / AndroidTool) does **not**
+>   flash from a text file; it flashes from its own **importable partition config**
+>   - the `.cfg` (INI-style, one `[<part>]` section per partition carrying
+>   `Name` / `Path` / `Type` / `Base` / `Length` / `Index` / `Mask`). The instant
+>   the table is read, export this config from the tool's 下载镜像 / 设备分区表
+>   panel and save it beside `parameter.txt`. This `.cfg` is the *only* artifact
+>   the tool can re-import to flash partitions - you can dump every byte and still
+>   be unable to write it back without it. It is a first-class backup, equal to the
+>   loader and the table.
 >
-> Do **not** proceed to any other backup or modification until both are on disk,
-> verified, and saved in four copies (see `pitfalls.md` 0.1). If they were already
+> Do **not** proceed to any other backup or modification until the table, the
+> loader, AND the tool config are on disk, verified, and saved in four copies (see
+> `pitfalls.md` 0.1). If they were already
 > captured in a *previous, verified* session on the *same* device, you may skip -
 > but say so explicitly and re-confirm their hashes against the live device first.
 

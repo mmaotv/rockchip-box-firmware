@@ -16,7 +16,7 @@ English abstract below. 中文说明为主。
 
 > **面向谁 / Audience:** 本仓库首先是一套 **给 AI 助手 / AI 工具使用的技能（skill / instruction set）**——
 > 由 AI agent、coding assistant 等读取 `SKILL.md` 作为指令、依照 `references/` 执行 RK 盒子的备份 / 精简 / 重刷任务。
-> 人类也可直接照此流程操作；AI 工具使用时请以 `SKILL.md` 为唯一权威入口，并在动手前**通读** `references/pitfalls.md`。
+> 人类也可直接照此流程操作；AI 工具使用时请先读 `AGENT.md`（入口指引），再以 `SKILL.md` 为权威工作流，并在动手前**通读** `references/pitfalls.md`。
 
 它适用于两类瑞芯微平台，差异只在三处：
 
@@ -37,6 +37,7 @@ English abstract below. 中文说明为主。
 
 ```
 SKILL.md                 技能主文件（完整工作流与铁律）
+AGENT.md                 AI 助手/工具如何调用本技能（入口指引，首要受众必读）
 references/              深度文档
   pitfalls.md            错误码、成因与对策；脚本陷阱（含第 0 章强制备份）
   backup-and-restore.md  分区表/GPT 解析、扇区运算、导出策略、三种恢复路径
@@ -44,6 +45,7 @@ references/              深度文档
   firmware-package-format.md  RKFW/RKAF 字节布局、loader 容器、提取配方
   case-legacy-rk3368.md  传统平台完整实战样例
   case-modern-rk3328.md  现代平台（GPT + 动态分区）实战样例
+  case-real-rk3566-we40.md  RK3566 实战样例（WE40/WE60Pro/W40 一系，Android 11 + super）
 scripts/                 驱动工具与校验脚本
   rk_tool.ps1            按控件 id 驱动 RKDevTool/AndroidTool（绝不靠坐标，避免误触破坏性按钮）
   verify_backup.ps1      大小校验 + 分区/整盘逐字节交叉比对 + 产出 sha256.txt
